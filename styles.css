@@ -228,6 +228,7 @@ input {
 .animating {
 	animation: fadein 1.3s forwards;
 }
+
 @keyframes fadein {
 	0% {
 		opacity: 0;
