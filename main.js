@@ -9,7 +9,8 @@ window.onload = function() {
 			highScoreDisp = document.querySelector(".highest-score"),
 			ready = document.querySelector(".ready"),
 			set = document.querySelector(".set"),
-			go = document.querySelector(".go");
+			go = document.querySelector(".go"),
+			gameover = document.querySelector(".gameover");
 
 	let currScore = 0;
 	let highScore = 0;
@@ -46,12 +47,15 @@ window.onload = function() {
 			setTimeout(function() {
 				set.classList.remove("animating");
 				go.classList.add("animating");
-			}, 1200)
+				setTimeout(function() {
+					go.classList.remove("animating");
+				}, 1200);
+			}, 1200);
 		}, 1200);
 		setTimeout(function() {
 		pattern.push(random());
 		nextTurn();
-	}, 4500);
+	}, 4000);
 	}
 
 	function nextTurn() {
@@ -91,7 +95,10 @@ window.onload = function() {
 			}
 		}
 		else {
-			console.log('wrong');
+			gameover.classList.add("animating");
+			setTimeout(function() {
+				gameover.classList.remove("animating");
+			}, 1500);
 			userTrack = 0;
 			currScore = 0;
 			pattern = [];
@@ -102,7 +109,6 @@ window.onload = function() {
 	}
 
 	red.addEventListener("click", function() {
-		console.log("hello")
 		userTurn.call(this);
 	})
 	blue.addEventListener("click", function() {
