@@ -60,6 +60,14 @@ button {
 															red;
 	cursor: pointer;
 }
+.red-click {
+	background:
+							linear-gradient(
+				 											rgba(20,20,20, .2),
+				 											rgba(20,20,20, .5)),
+															red;
+}
+
 .blue {
 	background: blue;
 }
@@ -92,4 +100,8 @@ button {
 															rgba(20,20,20, .5)),
 															green;
 	cursor: pointer;
+}
+
+.lighten {
+	background: black;
 }
