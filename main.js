@@ -11,17 +11,30 @@ window.onload = function() {
 	let highScore = 0;
 	let pattern = [];
 	let colors = [red, blue, yellow, green];
-	let j = 0;
+	let compTrack = 0;
+	let userTrack = 0;
+
+
+	function checkHighScore() {
+		if (currScore > highScore) {
+			highScore = currScore;
+		}
+	}
+	function printScores() {
+		currScoreDisp.innerHTML = currScore;
+		highScoreDisp.innerHTML = highScore;
+	}
 
 	startButton.addEventListener("click", function() {
 		pattern = [];
 		currScore = 0;
-		currScoreDisp.innerHTML = currScore;
+		compTrack = 0;
 		start();
 	})
 
 	function start() {
 		console.log("game about to start");
+		printScores();
 		setTimeout(function() {
 		pattern.push(random());
 		nextTurn();
@@ -29,39 +42,44 @@ window.onload = function() {
 	}
 
 	function nextTurn() {
-		if (j > pattern.length - 1) {
-			j = 0;
+		if (compTrack > pattern.length - 1) {
+			compTrack = 0;
 			return;
 		}
-		colors[pattern[j]].classList.add("lighten");
+		colors[pattern[compTrack]].classList.add("lighten");
 		setTimeout(function() {
-			colors[pattern[j]].classList.remove("lighten");
+			colors[pattern[compTrack]].classList.remove("lighten");
 			console.log(pattern);
-			j++;
+			compTrack++;
 			setTimeout(nextTurn, 500);
 		}, 500);
 	}
 	function userTurn() {
-		if (this === colors[pattern[j]]) {
+		if(compTrack !== 0) return;
+		if (this === colors[pattern[userTrack]]) {
 			console.log("correct");
-			console.log(j)
-			j++;
-			if (j === pattern.length) {
+			console.log(userTrack)
+			userTrack++;
+			if (userTrack === pattern.length) {
 				currScore++;
-				console.log(currScore);
-				j = 0;
+				checkHighScore();
+				printScores();
+				userTrack = 0;
 				pattern.push(random());
 				setTimeout(nextTurn, 1000);
 			}
 		}
 		else {
 			console.log('wrong');
-			j = 0;
+			userTrack = 0;
 			currScore = 0;
+			pattern = [];
+			printScores();
 			console.log(currScore);
 		}
 
 	}
+
 	red.addEventListener("click", function() {
 		userTurn.call(this);
 	})
@@ -74,6 +92,7 @@ window.onload = function() {
 	green.addEventListener("click", function() {
 		userTurn.call(this);
 	})
+
 	function random() {
 		return Math.floor(Math.random() * 4)
 	}
