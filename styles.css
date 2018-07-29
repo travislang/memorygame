@@ -12,6 +12,7 @@ body {
 	font-family: 'Exo 2', sans-serif;
 	width: 100%;
 	height: 100%;
+	background: #ededed;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -135,7 +136,7 @@ button {
   z-index: -1;
   margin: -35% 0 0 -35%;
   border-radius: 50%;
-  background: linear-gradient(#e8e7e1, #f8f6f3);
+  background: linear-gradient(#d8d7d0, #f8f6f3);
   box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.2),
 							0 2px 5px rgba(255, 255, 255, 0.15);
   -webkit-filter: blur(1px);
@@ -166,8 +167,7 @@ input {
 }
 .switch.blue {
 	top: 20px;
-	left: 50%;
-	transform: translateX(-50%);
+	left: 38%;
 }
 .switch.yellow {
 	top: 21.5vmin;
@@ -180,4 +180,34 @@ input {
 .switch.orange {
 	bottom: 8vmin;
 	right: 13.5vmin;
+}
+.start {
+	text-align: center;
+	font-size: 5em;
+	color: #53edd6;
+	text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	font-weight: 700;
+	z-index: 1000;
+	text-transform: uppercase;
+	position: absolute;
+	top: 35%;
+	left: 25%;
+	opacity: 0;
+}
+.animating {
+	animation: fadein 1.3s forwards;
+}
+@keyframes fadein {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0);
+	}
 }

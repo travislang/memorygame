@@ -6,7 +6,10 @@ window.onload = function() {
 			green = document.querySelector(".green"),
 			orange = document.querySelector(".orange"),
 			currScoreDisp = document.querySelector(".current-score"),
-			highScoreDisp = document.querySelector(".highest-score");
+			highScoreDisp = document.querySelector(".highest-score"),
+			ready = document.querySelector(".ready"),
+			set = document.querySelector(".set"),
+			go = document.querySelector(".go");
 
 	let currScore = 0;
 	let highScore = 0;
@@ -35,12 +38,20 @@ window.onload = function() {
 	})
 
 	function start() {
-		console.log("game about to start");
 		printScores();
+		ready.classList.add("animating");
+		setTimeout(function() {
+			ready.classList.remove("animating");
+			set.classList.add("animating");
+			setTimeout(function() {
+				set.classList.remove("animating");
+				go.classList.add("animating");
+			}, 1200)
+		}, 1200);
 		setTimeout(function() {
 		pattern.push(random());
 		nextTurn();
-		}, 1000);
+	}, 4500);
 	}
 
 	function nextTurn() {
