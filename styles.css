@@ -9,6 +9,7 @@ html, body {
 }
 
 body {
+	font-family: 'Exo 2', sans-serif;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -17,31 +18,47 @@ body {
 	align-items: center;
 }
 h1 {
-	padding: 50px;
+	padding: 25px;
 	text-transform: uppercase;
 	text-align: center;
 }
 .info {
 	display: flex;
+	width: 90%;
+	max-width: 600px;
 	justify-content: space-around;
 	align-items: center;
-	margin: 20px;
+	margin: 10px;
 	font-size: 1.25em;
 }
-button, .score {
-	margin-right: 50px;
+button, .score, .high-score {
+	margin: 0 50px;
+	text-align: center;
 }
 button {
 	padding: 5px 20px;
 }
 .container {
-	margin: 10px;
-	width: 90%;
-	max-width: 800px;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-auto-rows: minmax(10vmax, 30vh);
-	grid-gap: 10px;
+	position: relative;
+	width: 75vmin;
+	min-width: 450px;
+	height: 75vmin;
+	min-height: 450px;
+	margin: 0 auto;
+	border-radius: 50%;
+	border: 2px solid red;
+}
+.container:after {
+	content: "";
+	position: absolute;
+	top: 12vmin;
+	left: 12vmin;
+	right: 12vmin;
+	bottom: 12vmin;
+	border-radius: 50%;
+	border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+	z-index: -10;
 }
 .button {
 	width: 100%;
@@ -49,59 +66,175 @@ button {
 	border: 2px solid black;
 	border-radius: 20px;
 }
-.red {
-	background:	red;
+
+/* button stuff */
+
+.switch {
+  width: 100px;
+  height: 100px;
+  position: relative;
 }
-.red:hover {
-	background:
-							linear-gradient(
-				 											rgba(20,20,20, .2),
-				 											rgba(20,20,20, .5)),
-															red;
-	cursor: pointer;
+.switch label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: #a5a39d;
+  font-size: 2.1em;
+  font-family: sans-serif;
+  font-style: normal;
+  text-align: center;
+  line-height: 105px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  background: linear-gradient(#fdfdfd, #ece8dd);
+  transition: all 0.1s ease-out;
+  z-index: -1;
+  box-shadow: inset 0 4px 3px rgba(255, 255, 255, 0.8),
+										0 5px 8px rgba(0, 0, 0, 0.3),
+										0 8px 8px 3px rgba(0, 0, 0, 0.2);
 }
-.red-click {
-	background:
-							linear-gradient(
-				 											rgba(20,20,20, .2),
-				 											rgba(20,20,20, .5)),
-															red;
+.switch.blue label {
+	color: #9999ff;
+}
+.switch.red label {
+	color: #ff6666;
+}
+.switch.yellow label {
+	color: #ffff80;
+}
+.switch.green label {
+	color: #80ff80;
+}
+.switch.orange label {
+	color: #ffc266;
+}
+.switch label:before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: -8px;
+  bottom: -8px;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: inset 0 8px 8px rgba(0, 0, 0, 0.15);
+  /* Smooth trick */
+  filter: blur(1px);
+}
+.switch label:after {
+  content: "";
+  position: absolute;
+  left: -16px;
+  right: -16px;
+  top: -16px;
+  bottom: -16px;
+  z-index: -2;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+										0 1px 2px rgba(0, 0, 0, 0.15),
+										0 0 8px rgba(0, 0, 0, 0.1);
+}
+.icon-off:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  margin: -35% 0 0 -35%;
+  border-radius: 50%;
+  background: linear-gradient(#e8e7e1, #f8f6f3);
+  box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.2),
+							0 2px 5px rgba(255, 255, 255, 0.15);
+  -webkit-filter: blur(1px);
+  /* Smooth trick */
+  filter: blur(1px);
 }
 
-.blue {
-	background: blue;
+input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  /* This one is just for ergonomy */
+  cursor: pointer;
 }
-.blue:hover {
-	background:
-							linear-gradient(
-															rgba(20,20,20, .2),
-															rgba(20,20,20, .5)),
-															blue;
-	cursor: pointer;
-}
-.yellow {
-	background: yellow;
-}
-.yellow:hover {
-	background:
-							linear-gradient(
-															rgba(20,20,20, .2),
-															rgba(20,20,20, .5)),
-															yellow;
-	cursor: pointer;
-}
-.green {
-	background: green;
-}
-.green:hover {
-	background:
-							linear-gradient(
-															rgba(20,20,20, .2),
-															rgba(20,20,20, .5)),
-															green;
-	cursor: pointer;
-}
+.green input:hover + label {
+      color: #00ff00;
 
-.lighten {
-	background: black;
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
+			 									0 3px 5px rgba(0, 0, 0, 0.3),
+												0 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+.green input:hover + label span {
+	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+}
+.blue input:hover + label {
+      color: #0000ff;
+
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
+			 									0 3px 5px rgba(0, 0, 0, 0.3),
+												0 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+.blue input:hover + label span {
+	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+}
+.yellow input:hover + label {
+      color: #ffff00;
+
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
+			 									0 3px 5px rgba(0, 0, 0, 0.3),
+												0 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+.yellow input:hover + label span {
+	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+}
+.red input:hover + label {
+      color: #cc0000;
+
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
+			 									0 3px 5px rgba(0, 0, 0, 0.3),
+												0 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+.red input:hover + label span {
+	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+}
+.orange input:hover + label {
+      color: #ff9900;
+
+      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
+			 									0 3px 5px rgba(0, 0, 0, 0.3),
+												0 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+.orange input:hover + label span {
+	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+}
+.switch {
+    position: absolute;
+
+}
+.switch.red {
+	top: 21.5vmin;
+	left: 4vmin;
+}
+.switch.blue {
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.switch.yellow {
+	top: 21.5vmin;
+	right: 4vmin;
+}
+.switch.green {
+	bottom: 8vmin;
+	left: 13.5vmin;
+}
+.switch.orange {
+	bottom: 8vmin;
+	right: 13.5vmin;
 }
