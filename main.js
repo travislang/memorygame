@@ -17,6 +17,7 @@ window.onload = function() {
 	let pattern = [];
 	let colors = [red, blue, yellow, green, orange];
 	let hex = ["#cc0000", "#0000ff", "#ffff00", "#00ff00", "#ff9900"];
+	let gradients = ["rgb(239, 88, 88)", "rgb(75, 128, 252)", "rgb(255, 246, 89)", "rgb(75, 252, 96)", "rgb(234, 167, 72)"];
 	let compTrack = 0;
 	let userTrack = 0;
 
@@ -61,9 +62,12 @@ window.onload = function() {
 	function nextTurn() {
 		colors[pattern[compTrack]].lastElementChild.classList.add("active");
 		colors[pattern[compTrack]].lastElementChild.style.color = hex[pattern[compTrack]];
+		colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background =
+		`radial-gradient(${gradients[pattern[compTrack]]}, rgba(255, 255, 255, 0.0) 40%, rgba(255, 255, 255, 0.0))`;
 		setTimeout(function() {
 			colors[pattern[compTrack]].lastElementChild.classList.remove("active");
 			colors[pattern[compTrack]].lastElementChild.style.color = "";
+			colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background = "";
 			console.log(pattern);
 			compTrack++;
 			if (compTrack > pattern.length - 1) {
@@ -80,9 +84,12 @@ window.onload = function() {
 		if (this === colors[pattern[userTrack]]) {
 			this.lastElementChild.classList.add("active");
 			this.lastElementChild.style.color = hex[pattern[userTrack]];
+			this.lastElementChild.firstElementChild.style.background =
+			`radial-gradient(${gradients[pattern[userTrack]]}, rgba(255, 255, 255, 0.0) 40%, rgba(255, 255, 255, 0.0))`;
 			setTimeout(function() {
 				this.lastElementChild.classList.remove("active");
 				this.lastElementChild.style.color = "";
+				this.lastElementChild.firstElementChild.style.background = "";
 			}.bind(this), 300);
 			userTrack++;
 			if (userTrack === pattern.length) {

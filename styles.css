@@ -153,6 +153,14 @@ button {
 										0 1px 2px rgba(0, 0, 0, 0.15),
 										0 0 8px rgba(0, 0, 0, 0.1);
 }
+.icon-off {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	border-radius: 50%;
+}
 .icon-off:after {
 	opacity: 1;
   content: "";
