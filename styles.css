@@ -40,25 +40,13 @@ button {
 }
 .container {
 	position: relative;
-	width: 75vmin;
+	width: 70vmin;
 	min-width: 450px;
-	height: 75vmin;
+	height: 70vmin;
 	min-height: 450px;
 	margin: 0 auto;
 	border-radius: 50%;
-	border: 2px solid red;
 }
-.container:after {
-	content: "";
-	position: absolute;
-	top: 12vmin;
-	left: 12vmin;
-	right: 12vmin;
-	bottom: 12vmin;
-	border-radius: 50%;
-	border-top: 1px solid #ddd;
-  border-bottom: 1px solid #fff;
-	z-index: -10;
 }
 .button {
 	width: 100%;
@@ -79,7 +67,7 @@ button {
   width: 100%;
   height: 100%;
   position: relative;
-  color: #a5a39d;
+  color: #e8ebef;
   font-size: 2.1em;
   font-family: sans-serif;
   font-style: normal;
@@ -95,19 +83,19 @@ button {
 										0 8px 8px 3px rgba(0, 0, 0, 0.2);
 }
 .switch.blue label {
-	color: #9999ff;
+	color: #bcc6f2;
 }
 .switch.red label {
-	color: #ff6666;
+	color: #f7adad;
 }
 .switch.yellow label {
-	color: #ffff80;
+	color: #f7f6c0;
 }
 .switch.green label {
-	color: #80ff80;
+	color: #c2f9c0;
 }
 .switch.orange label {
-	color: #ffc266;
+	color: #f9dcc0;
 }
 .switch label:before {
   content: "";
@@ -136,6 +124,7 @@ button {
 										0 0 8px rgba(0, 0, 0, 0.1);
 }
 .icon-off:after {
+	opacity: 1;
   content: "";
   display: block;
   position: absolute;
@@ -160,58 +149,12 @@ input {
   height: 100%;
   z-index: 100;
   opacity: 0;
-  /* This one is just for ergonomy */
   cursor: pointer;
 }
-.green input:hover + label {
-      color: #00ff00;
-
+.active {
       box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
 			 									0 3px 5px rgba(0, 0, 0, 0.3),
-												0 3px 5px 3px rgba(0, 0, 0, 0.1);
-}
-.green input:hover + label span {
-	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
-}
-.blue input:hover + label {
-      color: #0000ff;
-
-      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
-			 									0 3px 5px rgba(0, 0, 0, 0.3),
-												0 3px 5px 3px rgba(0, 0, 0, 0.1);
-}
-.blue input:hover + label span {
-	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
-}
-.yellow input:hover + label {
-      color: #ffff00;
-
-      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
-			 									0 3px 5px rgba(0, 0, 0, 0.3),
-												0 3px 5px 3px rgba(0, 0, 0, 0.1);
-}
-.yellow input:hover + label span {
-	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
-}
-.red input:hover + label {
-      color: #cc0000;
-
-      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
-			 									0 3px 5px rgba(0, 0, 0, 0.3),
-												0 3px 5px 3px rgba(0, 0, 0, 0.1);
-}
-.red input:hover + label span {
-	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
-}
-.orange input:hover + label {
-      color: #ff9900;
-
-      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
-			 									0 3px 5px rgba(0, 0, 0, 0.3),
-												0 3px 5px 3px rgba(0, 0, 0, 0.1);
-}
-.orange input:hover + label span {
-	text-shadow: 0 2px 2px rgba(0, 255, 0, 0.2);
+												0 3px 5px 3px rgba(0, 0, 0, 0.1) !important;
 }
 .switch {
     position: absolute;
