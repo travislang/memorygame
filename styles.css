@@ -50,14 +50,46 @@ button {
 	border-radius: 20px;
 }
 .red {
-	background: red;
+	background:	red;
+}
+.red:hover {
+	background:
+							linear-gradient(
+				 											rgba(20,20,20, .2),
+				 											rgba(20,20,20, .5)),
+															red;
+	cursor: pointer;
 }
 .blue {
 	background: blue;
 }
+.blue:hover {
+	background:
+							linear-gradient(
+															rgba(20,20,20, .2),
+															rgba(20,20,20, .5)),
+															blue;
+	cursor: pointer;
+}
 .yellow {
 	background: yellow;
 }
+.yellow:hover {
+	background:
+							linear-gradient(
+															rgba(20,20,20, .2),
+															rgba(20,20,20, .5)),
+															yellow;
+	cursor: pointer;
+}
 .green {
 	background: green;
+}
+.green:hover {
+	background:
+							linear-gradient(
+															rgba(20,20,20, .2),
+															rgba(20,20,20, .5)),
+															green;
+	cursor: pointer;
 }
