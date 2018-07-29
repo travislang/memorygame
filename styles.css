@@ -1,1 +1,63 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
+html, body {
+	font-size: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+h1 {
+	padding: 50px;
+	text-transform: uppercase;
+	text-align: center;
+}
+.info {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px;
+	font-size: 1.25em;
+}
+button, .score {
+	margin-right: 50px;
+}
+button {
+	padding: 5px 20px;
+}
+.container {
+	margin: 10px;
+	width: 90%;
+	max-width: 800px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: minmax(10vmax, 30vh);
+	grid-gap: 10px;
+}
+.button {
+	width: 100%;
+	height: 100%;
+	border: 2px solid black;
+	border-radius: 20px;
+}
+.red {
+	background: red;
+}
+.blue {
+	background: blue;
+}
+.yellow {
+	background: yellow;
+}
+.green {
+	background: green;
+}
