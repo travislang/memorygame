@@ -17,7 +17,7 @@ body {
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	margin-bottom: 25px;
+	margin: 20px 0;
 }
 h1 {
 	font-size: 2em;
@@ -72,9 +72,9 @@ button, .score, .high-score {
 }
 .container {
 	position: relative;
-	width: 70vmin;
+	width: 65vmin;
 	min-width: 280px;
-	height: 70vmin;
+	height: 65vmin;
 	min-height: 280px;
 	margin: 0 auto;
 	border-radius: 50%;
