@@ -1,26 +1,32 @@
 window.onload = function() {
 	const startButton = document.querySelector("button"),
-			red = document.querySelector(".red"),
-			blue = document.querySelector(".blue"),
-			yellow = document.querySelector(".yellow"),
-			green = document.querySelector(".green"),
-			orange = document.querySelector(".orange"),
-			currScoreDisp = document.querySelector(".current-score"),
-			highScoreDisp = document.querySelector(".highest-score"),
-			ready = document.querySelector(".ready"),
-			set = document.querySelector(".set"),
-			go = document.querySelector(".go"),
-			gameover = document.querySelector(".gameover");
+				red = document.querySelector(".red"),
+				blue = document.querySelector(".blue"),
+				yellow = document.querySelector(".yellow"),
+				green = document.querySelector(".green"),
+				orange = document.querySelector(".orange"),
+				currScoreDisp = document.querySelector(".current-score"),
+				highScoreDisp = document.querySelector(".highest-score"),
+				ready = document.querySelector(".ready"),
+				set = document.querySelector(".set"),
+				go = document.querySelector(".go"),
+				gameover = document.querySelector(".gameover");
 
 	let currScore = 0;
-	let highScore = 0;
-	let pattern = [];
-	let colors = [red, blue, yellow, green, orange];
-	let hex = ["#cc0000", "#0000ff", "#ffff00", "#00ff00", "#ff9900"];
-	let gradients = ["rgb(239, 88, 88)", "rgb(75, 128, 252)", "rgb(255, 246, 89)", "rgb(75, 252, 96)", "rgb(234, 167, 72)"];
-	let compTrack = 0;
-	let userTrack = 0;
+			highScore = 0,
+			pattern = [],
+			colors = [red, blue, yellow, green, orange],
+			hex = ["#cc0000", "#0000ff", "#ffff00", "#00ff00", "#ff9900"],
+			gradients = ["rgb(239, 88, 88)", "rgb(75, 128, 252)", "rgb(255, 246, 89)", "rgb(75, 252, 96)", "rgb(234, 167, 72)"],
+			compTrack = 0,
+			userTrack = 0;
 
+	function delay() {
+		if (pattern.length > 3) {
+			return (500 - (30 * pattern.length));
+		}
+		else return 500;
+	}
 
 	function checkHighScore() {
 		if (currScore > highScore) {
@@ -50,13 +56,13 @@ window.onload = function() {
 				go.classList.add("animating");
 				setTimeout(function() {
 					go.classList.remove("animating");
-				}, 1200);
-			}, 1200);
-		}, 1200);
+				}, 1000);
+			}, 1000);
+		}, 1000);
 		setTimeout(function() {
 		pattern.push(random());
 		nextTurn();
-	}, 4000);
+	}, 3500);
 	}
 
 	function nextTurn() {
@@ -75,9 +81,9 @@ window.onload = function() {
 				return;
 			}
 			else {
-				setTimeout(nextTurn, 500);
+				setTimeout(nextTurn, delay());
 			}
-		}, 500);
+		}, delay());
 	}
 	function userTurn() {
 		if(compTrack !== 0) return;
@@ -102,10 +108,12 @@ window.onload = function() {
 			}
 		}
 		else {
-			gameover.classList.add("animating");
-			setTimeout(function() {
-				gameover.classList.remove("animating");
-			}, 1500);
+			if(pattern.length > 0) {
+				gameover.classList.add("animating");
+				setTimeout(function() {
+					gameover.classList.remove("animating");
+				}, 1500);
+			}
 			userTrack = 0;
 			currScore = 0;
 			pattern = [];
