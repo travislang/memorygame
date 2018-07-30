@@ -20,6 +20,7 @@ body {
 	margin-bottom: 25px;
 }
 h1 {
+	font-size: 2em;
 	padding: 15px;
 	text-transform: uppercase;
 	text-align: center;
@@ -72,13 +73,11 @@ button, .score, .high-score {
 .container {
 	position: relative;
 	width: 70vmin;
-	min-width: 250px;
+	min-width: 280px;
 	height: 70vmin;
-	min-height: 250px;
+	min-height: 280px;
 	margin: 0 auto;
 	border-radius: 50%;
-	border: 2px solid red;
-}
 }
 .button {
 	width: 100%;
@@ -162,6 +161,9 @@ button, .score, .high-score {
 	bottom: 0;
 	right: 0;
 	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .icon-off:after {
 	opacity: 1;
@@ -252,4 +254,21 @@ input {
 		opacity: 0;
 		transform: scale(0);
 	}
+}
+
+@media only screen and (max-width: 500px) {
+	body {
+		font-size: 0.8rem;
+	}
+	button, .score, .high-score {
+		margin: 0 30px;
+		text-align: center;
+}
+@media only screen and (max-width: 400px) {
+	body {
+		font-size: 0.7rem;
+	}
+	button, .score, .high-score {
+		margin: 0 20px;
+		text-align: center;
 }
