@@ -224,7 +224,7 @@ input {
 }
 .start {
 	text-align: center;
-	width: 200px;
+	/* width: 300px; */
 	font-size: 5em;
 	color: #1ECD97;
 	text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
@@ -232,10 +232,10 @@ input {
 	z-index: 1000;
 	text-transform: uppercase;
 	position: absolute;
-	top: 25%;
-	left: 25%;
+	top: 43%;
+	left: 50%;
 	opacity: 0;
-	transform: scale(0);
+	transform: translate(-50%, -50%) scale(0);
 }
 .animating {
 	animation: fadein 1.3s forwards;
@@ -244,15 +244,15 @@ input {
 @keyframes fadein {
 	0% {
 		opacity: 0;
-		transform: scale(0);
+		transform: translate(-50%, -50%) scale(0);
 	}
 	50% {
 		opacity: 1;
-		transform: scale(1.2);
+		transform: translate(-50%, -50%) scale(1.2);
 	}
 	100% {
 		opacity: 0;
-		transform: scale(0);
+		transform: translate(-50%, -50%) scale(0);
 	}
 }
 

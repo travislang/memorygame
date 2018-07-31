@@ -48,10 +48,13 @@ window.onload = function() {
 	function start() {
 		printScores();
 		ready.classList.add("animating");
+		soundData.start.sound.play();
 		setTimeout(function() {
+			soundData.start.sound.play();
 			ready.classList.remove("animating");
 			set.classList.add("animating");
 			setTimeout(function() {
+				soundData.start.sound.play();
 				set.classList.remove("animating");
 				go.classList.add("animating");
 				setTimeout(function() {
@@ -66,6 +69,7 @@ window.onload = function() {
 	}
 
 	function nextTurn() {
+		soundData[colors[pattern[compTrack]].classList[1]].sound.play();
 		colors[pattern[compTrack]].lastElementChild.classList.add("active");
 		colors[pattern[compTrack]].lastElementChild.style.color = hex[pattern[compTrack]];
 		colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background =
@@ -88,6 +92,7 @@ window.onload = function() {
 	function userTurn() {
 		if(compTrack !== 0) return;
 		if (this === colors[pattern[userTrack]]) {
+			soundData[this.classList[1]].sound.play();
 			this.lastElementChild.classList.add("active");
 			this.lastElementChild.style.color = hex[pattern[userTrack]];
 			this.lastElementChild.firstElementChild.style.background =
@@ -109,6 +114,7 @@ window.onload = function() {
 		}
 		else {
 			if(pattern.length > 0) {
+				soundData.gameover.sound.play();
 				gameover.classList.add("animating");
 				setTimeout(function() {
 					gameover.classList.remove("animating");
@@ -120,7 +126,45 @@ window.onload = function() {
 			printScores();
 			console.log(currScore);
 		}
+	}
 
+	//sounds object
+	const soundData = {
+		red: {
+			sound: new Howl({
+				src: ['sounds/corona.mp3']
+			})
+		},
+		blue: {
+			sound: new Howl({
+				src: ['sounds/flash-2.mp3']
+			})
+		},
+		yellow: {
+			sound: new Howl({
+				src: ['sounds/glimmer.mp3']
+			})
+		},
+		orange: {
+			sound: new Howl({
+				src: ['sounds/moon.mp3']
+			})
+		},
+		green: {
+			sound: new Howl({
+				src: ['sounds/piston-2.mp3']
+			})
+		},
+		start: {
+			sound: new Howl({
+				src: ['sounds/veil.mp3']
+			})
+		},
+		gameover: {
+			sound: new Howl({
+				src: ['sounds/splits.mp3']
+			})
+		}
 	}
 
 	red.addEventListener("click", function() {
