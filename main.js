@@ -62,17 +62,18 @@ window.onload = function() {
 		}, 1000);
 		setTimeout(function() {
 		pattern.push(random());
-		nextTurn();
+		nextTurn(30);
 	}, 3500);
 	}
 
-	function nextTurn() {
+	function nextTurn(time) {
 		soundData[colors[pattern[compTrack]].classList[1]].sound.play();
 		colors[pattern[compTrack]].lastElementChild.classList.add("active");
 		colors[pattern[compTrack]].lastElementChild.style.color = hex[pattern[compTrack]];
 		colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background =
 		`radial-gradient(${gradients[pattern[compTrack]]}, rgba(255, 255, 255, 0.0) 40%, rgba(255, 255, 255, 0.0))`;
 		setTimeout(function() {
+			console.log(delay(time))
 			colors[pattern[compTrack]].lastElementChild.classList.remove("active");
 			colors[pattern[compTrack]].lastElementChild.style.color = "";
 			colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background = "";
@@ -82,9 +83,9 @@ window.onload = function() {
 				return;
 			}
 			else {
-				setTimeout(nextTurn, delay(30));
+				setTimeout(nextTurn, delay(time), 30);
 			}
-		}, delay(30));
+		}, delay(time));
 	}
 	function userTurn() {
 		if(compTrack !== 0) return;
@@ -106,7 +107,7 @@ window.onload = function() {
 				printScores();
 				userTrack = 0;
 				pattern.push(random());
-				setTimeout(nextTurn, 1000);
+				setTimeout(nextTurn, 1000, 30);
 			}
 		}
 		else {
@@ -115,9 +116,8 @@ window.onload = function() {
 				gameover.classList.add("animating");
 				setTimeout(function() {
 					gameover.classList.remove("animating");
-					nextTurn();
+					nextTurn(15);
 					setTimeout(function() {
-						console.log("now")
 						userTrack = 0;
 						currScore = 0;
 						pattern = [];
