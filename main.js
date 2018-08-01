@@ -36,7 +36,7 @@ window.onload = function() {
 	}
 
 	startButton.addEventListener("click", function() {
-		if (userTrack !== 0) return;
+		if(pattern.length !== 0) return;
 		pattern = [];
 		currScore = 0;
 		compTrack = 0;
@@ -116,9 +116,13 @@ window.onload = function() {
 				setTimeout(function() {
 					gameover.classList.remove("animating");
 					nextTurn();
-					userTrack = 0;
-					currScore = 0;
-					printScores();
+					setTimeout(function() {
+						console.log("now")
+						userTrack = 0;
+						currScore = 0;
+						pattern = [];
+						printScores();
+					}, (pattern.length * (delay(30) * 2)) + 200);
 				}, 1500)
 			}
 		}
