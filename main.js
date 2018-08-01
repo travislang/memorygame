@@ -21,11 +21,8 @@ window.onload = function() {
 			compTrack = 0,
 			userTrack = 0;
 
-	function delay() {
-		if (pattern.length > 3) {
-			return (500 - (30 * pattern.length));
-		}
-		else return 500;
+	function delay(t) {
+			return (500 - (t * pattern.length));
 	}
 
 	function checkHighScore() {
@@ -39,6 +36,7 @@ window.onload = function() {
 	}
 
 	startButton.addEventListener("click", function() {
+		if (userTrack !== 0) return;
 		pattern = [];
 		currScore = 0;
 		compTrack = 0;
@@ -78,16 +76,15 @@ window.onload = function() {
 			colors[pattern[compTrack]].lastElementChild.classList.remove("active");
 			colors[pattern[compTrack]].lastElementChild.style.color = "";
 			colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background = "";
-			console.log(pattern);
 			compTrack++;
 			if (compTrack > pattern.length - 1) {
 				compTrack = 0;
 				return;
 			}
 			else {
-				setTimeout(nextTurn, delay());
+				setTimeout(nextTurn, delay(30));
 			}
-		}, delay());
+		}, delay(30));
 	}
 	function userTurn() {
 		if(compTrack !== 0) return;
@@ -118,13 +115,12 @@ window.onload = function() {
 				gameover.classList.add("animating");
 				setTimeout(function() {
 					gameover.classList.remove("animating");
-				}, 1500);
+					nextTurn();
+					userTrack = 0;
+					currScore = 0;
+					printScores();
+				}, 1500)
 			}
-			userTrack = 0;
-			currScore = 0;
-			pattern = [];
-			printScores();
-			console.log(currScore);
 		}
 	}
 
