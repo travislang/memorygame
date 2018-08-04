@@ -1,5 +1,5 @@
 window.onload = function() {
-	const startButton = document.querySelector("button"),
+	const startButton = document.querySelector("#start"),
 				red = document.querySelector(".red"),
 				blue = document.querySelector(".blue"),
 				yellow = document.querySelector(".yellow"),
@@ -21,11 +21,12 @@ window.onload = function() {
 			compTrack = 0,
 			userTrack = 0;
 
-	function delay() {
-		if (pattern.length > 3) {
-			return (500 - (30 * pattern.length));
+	function delay(t) {
+		if(pattern.length < 10) {
+			return (500 - (t * pattern.length));
+		} else {
+			return 200;
 		}
-		else return 500;
 	}
 
 	function checkHighScore() {
@@ -39,6 +40,24 @@ window.onload = function() {
 	}
 
 	startButton.addEventListener("click", function() {
+		this.lastElementChild.classList.add("active");
+		this.lastElementChild.style.color = "#1ECD97";
+		setTimeout(function() {
+			this.lastElementChild.classList.remove("active");
+			this.lastElementChild.style.color = "";
+			this.style.animationPlayState = "running";
+			colors.forEach(function(item) {
+				item.style.animationPlayState = "running";
+			})
+			setTimeout(function() {
+				this.lastElementChild.classList.remove("active");
+				this.style.animationPlayState = "paused";
+				colors.forEach(function(item) {
+					item.style.animationPlayState = "paused";
+				})
+			}.bind(this), 1000);
+		}.bind(this), 300);
+		if(pattern.length !== 0) return;
 		pattern = [];
 		currScore = 0;
 		compTrack = 0;
@@ -47,47 +66,38 @@ window.onload = function() {
 
 	function start() {
 		printScores();
-		ready.classList.add("animating");
+		soundData.start.sound.play();
 		setTimeout(function() {
-			ready.classList.remove("animating");
-			set.classList.add("animating");
-			setTimeout(function() {
-				set.classList.remove("animating");
-				go.classList.add("animating");
-				setTimeout(function() {
-					go.classList.remove("animating");
-				}, 1000);
-			}, 1000);
-		}, 1000);
-		setTimeout(function() {
-		pattern.push(random());
-		nextTurn();
-	}, 3500);
+			pattern.push(random());
+			nextTurn(30);
+	}, 1700);
 	}
 
-	function nextTurn() {
+	function nextTurn(time) {
+		soundData[colors[pattern[compTrack]].classList[1]].sound.play();
 		colors[pattern[compTrack]].lastElementChild.classList.add("active");
 		colors[pattern[compTrack]].lastElementChild.style.color = hex[pattern[compTrack]];
 		colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background =
 		`radial-gradient(${gradients[pattern[compTrack]]}, rgba(255, 255, 255, 0.0) 40%, rgba(255, 255, 255, 0.0))`;
 		setTimeout(function() {
+			console.log(delay(time))
 			colors[pattern[compTrack]].lastElementChild.classList.remove("active");
 			colors[pattern[compTrack]].lastElementChild.style.color = "";
 			colors[pattern[compTrack]].lastElementChild.firstElementChild.style.background = "";
-			console.log(pattern);
 			compTrack++;
 			if (compTrack > pattern.length - 1) {
 				compTrack = 0;
 				return;
 			}
 			else {
-				setTimeout(nextTurn, delay());
+				setTimeout(nextTurn, delay(time), 30);
 			}
-		}, delay());
+		}, delay(time));
 	}
 	function userTurn() {
 		if(compTrack !== 0) return;
 		if (this === colors[pattern[userTrack]]) {
+			soundData[this.classList[1]].sound.play();
 			this.lastElementChild.classList.add("active");
 			this.lastElementChild.style.color = hex[pattern[userTrack]];
 			this.lastElementChild.firstElementChild.style.background =
@@ -104,23 +114,75 @@ window.onload = function() {
 				printScores();
 				userTrack = 0;
 				pattern.push(random());
-				setTimeout(nextTurn, 1000);
+				setTimeout(nextTurn, 1000, 30);
 			}
 		}
 		else {
 			if(pattern.length > 0) {
+				soundData.gameover.sound.play();
 				gameover.classList.add("animating");
 				setTimeout(function() {
 					gameover.classList.remove("animating");
-				}, 1500);
+					nextTurn(15);
+					setTimeout(function() {
+						console.log((pattern.length * (delay(30) * 2)) + 200)
+						userTrack = 0;
+						currScore = 0;
+						pattern = [];
+						printScores();
+						startButton.style.animationPlayState = "running";
+						colors.forEach(function(item) {
+							item.style.animationPlayState = "running";
+						})
+						setTimeout(function() {
+							startButton.style.animationPlayState = "paused";
+							colors.forEach(function(item) {
+								item.style.animationPlayState = "paused";
+							})
+						}, 1000);
+					}, (pattern.length * (delay(30) * 2)) + 200);
+				}, 1500)
 			}
-			userTrack = 0;
-			currScore = 0;
-			pattern = [];
-			printScores();
-			console.log(currScore);
 		}
+	}
 
+	//sounds object
+	const soundData = {
+		red: {
+			sound: new Howl({
+				src: ['sounds/corona.mp3']
+			})
+		},
+		blue: {
+			sound: new Howl({
+				src: ['sounds/flash-2.mp3']
+			})
+		},
+		yellow: {
+			sound: new Howl({
+				src: ['sounds/glimmer.mp3']
+			})
+		},
+		orange: {
+			sound: new Howl({
+				src: ['sounds/moon.mp3']
+			})
+		},
+		green: {
+			sound: new Howl({
+				src: ['sounds/piston-2.mp3']
+			})
+		},
+		start: {
+			sound: new Howl({
+				src: ['sounds/veil.mp3']
+			})
+		},
+		gameover: {
+			sound: new Howl({
+				src: ['sounds/splits.mp3']
+			})
+		}
 	}
 
 	red.addEventListener("click", function() {
