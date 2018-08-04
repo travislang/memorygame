@@ -93,7 +93,6 @@ button, .score, .high-score {
 	/* width: 300px; */
 	font-size: .5em;
 	letter-spacing: 1px;
-	color: #1ECD97;
 	font-weight: 700;
 	text-transform: uppercase;
 	position: absolute;
@@ -223,22 +222,22 @@ input {
 .switch.start-button {
 	top: 50%;
 	left: 50%;
-	animation: startingbutton 1s forwards paused alternate infinite;
+	animation: startingbutton 1s forwards linear paused alternate infinite;
 }
 .switch.red {
-	animation: startingred 1s forwards paused alternate infinite;
+	animation: startingred 1s forwards linear paused alternate infinite;
 }
 .switch.blue {
-	animation: startingblue 1s forwards alternate infinite paused;
+	animation: startingblue 1s forwards linear alternate infinite paused;
 }
 .switch.yellow {
-	animation: startingyellow 1s forwards alternate infinite paused;
+	animation: startingyellow 1s forwards linear alternate infinite paused;
 }
 .switch.green {
-	animation: startinggreen 1s forwards alternate infinite paused;
+	animation: startinggreen 1s forwards linear alternate infinite paused;
 }
 .switch.orange {
-	animation: startingorange 1s forwards alternate infinite paused;
+	animation: startingorange 1s forwards linear alternate infinite paused;
 }
 .start {
 	text-align: center;
