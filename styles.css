@@ -42,7 +42,7 @@ button, .score, .high-score {
 	margin: 0 50px;
 	text-align: center;
 }
-#button {
+/* #button {
 	padding: 10px;
 	text-transform: uppercase;
 	text-align: center;
@@ -64,7 +64,7 @@ button, .score, .high-score {
 #button:hover {
   color: white;
   background: #1ECD97;
-}
+} */
 .current-score, .highest-score {
 	font-weight: bold;
 	font-size: 1.2em;
@@ -88,6 +88,22 @@ button, .score, .high-score {
 
 /* button stuff */
 
+#start {
+	text-align: center;
+	/* width: 300px; */
+	font-size: .5em;
+	letter-spacing: 1px;
+	color: #1ECD97;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+	font-weight: 700;
+	text-transform: uppercase;
+	position: absolute;
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+}
+#start label {
+	color: #1ECD97;
+}
 .switch {
   width: 24%;
   height: 24%;
@@ -187,6 +203,8 @@ button, .score, .high-score {
 
 input {
   position: absolute;
+	top: 0;
+	left: 0;
   width: 100%;
   height: 100%;
   z-index: 100;
@@ -202,25 +220,25 @@ input {
     position: absolute;
 
 }
+.switch.start-button {
+	top: 50%;
+	left: 50%;
+	animation: startingbutton 1s forwards paused alternate infinite;
+}
 .switch.red {
-	top: 28%;
-	left: 6%;
+	animation: startingred 1s forwards paused alternate infinite;
 }
 .switch.blue {
-	top: 20px;
-	left: 38%;
+	animation: startingblue 1s forwards alternate infinite paused;
 }
 .switch.yellow {
-	top: 28%;
-	right: 6%;
+	animation: startingyellow 1s forwards alternate infinite paused;
 }
 .switch.green {
-	bottom: 11%;
-	left: 18%;
+	animation: startinggreen 1s forwards alternate infinite paused;
 }
 .switch.orange {
-	bottom: 11%;
-	right: 18%;
+	animation: startingorange 1s forwards alternate infinite paused;
 }
 .start {
 	text-align: center;
@@ -253,6 +271,82 @@ input {
 	100% {
 		opacity: 0;
 		transform: translate(-50%, -50%) scale(0);
+	}
+}
+@keyframes startingbutton {
+	0% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	100% {
+		opacity: 0;
+		    transform: translate(-50%, -50%) scale(0);
+	}
+}
+
+@keyframes startingred {
+	0% {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0
+	}
+	100% {
+		top: 28%;
+		left: 6%;
+		opacity: 1;
+	}
+}
+@keyframes startingblue {
+	0% {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0
+	}
+	100% {
+		top: 20px;
+		left: 38%;
+		opacity: 1;
+	}
+}
+@keyframes startingyellow {
+	0% {
+		top: 50%;
+		right: 50%;
+		transform: translate(50%, -50%);
+		opacity: 0
+	}
+	100% {
+		top: 28%;
+		right: 6%;
+		opacity: 1;
+	}
+}
+@keyframes startinggreen {
+	0% {
+		bottom: 50%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		opacity: 0
+	}
+	100% {
+		bottom: 11%;
+		left: 18%;
+		opacity: 1;
+	}
+}
+@keyframes startingorange {
+	0% {
+		bottom: 50%;
+		right: 50%;
+		transform: translate(50%, 50%);
+		opacity: 0
+	}
+	100% {
+		bottom: 11%;
+		right: 18%;
+		opacity: 1;
 	}
 }
 

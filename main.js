@@ -1,5 +1,5 @@
 window.onload = function() {
-	const startButton = document.querySelector("button"),
+	const startButton = document.querySelector("#start"),
 				red = document.querySelector(".red"),
 				blue = document.querySelector(".blue"),
 				yellow = document.querySelector(".yellow"),
@@ -36,6 +36,21 @@ window.onload = function() {
 	}
 
 	startButton.addEventListener("click", function() {
+		this.lastElementChild.classList.add("active");
+		setTimeout(function() {
+			this.lastElementChild.classList.remove("active");
+			this.style.animationPlayState = "running";
+			colors.forEach(function(item) {
+				item.style.animationPlayState = "running";
+			})
+			setTimeout(function() {
+				this.lastElementChild.classList.remove("active");
+				this.style.animationPlayState = "paused";
+				colors.forEach(function(item) {
+					item.style.animationPlayState = "paused";
+				})
+			}.bind(this), 1000);
+		}.bind(this), 300);
 		if(pattern.length !== 0) return;
 		pattern = [];
 		currScore = 0;
@@ -45,25 +60,11 @@ window.onload = function() {
 
 	function start() {
 		printScores();
-		ready.classList.add("animating");
 		soundData.start.sound.play();
 		setTimeout(function() {
-			soundData.start.sound.play();
-			ready.classList.remove("animating");
-			set.classList.add("animating");
-			setTimeout(function() {
-				soundData.start.sound.play();
-				set.classList.remove("animating");
-				go.classList.add("animating");
-				setTimeout(function() {
-					go.classList.remove("animating");
-				}, 1000);
-			}, 1000);
-		}, 1000);
-		setTimeout(function() {
-		pattern.push(random());
-		nextTurn(30);
-	}, 3500);
+			pattern.push(random());
+			nextTurn(30);
+	}, 1700);
 	}
 
 	function nextTurn(time) {
@@ -122,6 +123,16 @@ window.onload = function() {
 						currScore = 0;
 						pattern = [];
 						printScores();
+						startButton.style.animationPlayState = "running";
+						colors.forEach(function(item) {
+							item.style.animationPlayState = "running";
+						})
+						setTimeout(function() {
+							startButton.style.animationPlayState = "paused";
+							colors.forEach(function(item) {
+								item.style.animationPlayState = "paused";
+							})
+						}, 1000);
 					}, (pattern.length * (delay(30) * 2)) + 200);
 				}, 1500)
 			}
