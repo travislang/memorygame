@@ -256,7 +256,6 @@ input {
 		    transform: translate(-50%, -50%) scale(0);
 	}
 }
-
 @keyframes startingred {
 	0% {
 		top: 50%;
@@ -322,6 +321,8 @@ input {
 		opacity: 1;
 	}
 }
+
+/* media queries */
 
 @media only screen and (max-width: 500px) {
 	body {
