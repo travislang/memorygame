@@ -94,7 +94,6 @@ button, .score, .high-score {
 	font-size: .5em;
 	letter-spacing: 1px;
 	color: #1ECD97;
-	text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 	font-weight: 700;
 	text-transform: uppercase;
 	position: absolute;
@@ -102,7 +101,8 @@ button, .score, .high-score {
 	transform: translate(-50%, -50%) scale(1);
 }
 #start label {
-	color: #1ECD97;
+	color: gray;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 .switch {
   width: 24%;

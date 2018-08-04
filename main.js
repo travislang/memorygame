@@ -22,7 +22,11 @@ window.onload = function() {
 			userTrack = 0;
 
 	function delay(t) {
+		if(pattern.length < 10) {
 			return (500 - (t * pattern.length));
+		} else {
+			return 200;
+		}
 	}
 
 	function checkHighScore() {
@@ -37,8 +41,10 @@ window.onload = function() {
 
 	startButton.addEventListener("click", function() {
 		this.lastElementChild.classList.add("active");
+		this.lastElementChild.style.color = "#1ECD97";
 		setTimeout(function() {
 			this.lastElementChild.classList.remove("active");
+			this.lastElementChild.style.color = "";
 			this.style.animationPlayState = "running";
 			colors.forEach(function(item) {
 				item.style.animationPlayState = "running";
@@ -119,6 +125,7 @@ window.onload = function() {
 					gameover.classList.remove("animating");
 					nextTurn(15);
 					setTimeout(function() {
+						console.log((pattern.length * (delay(30) * 2)) + 200)
 						userTrack = 0;
 						currScore = 0;
 						pattern = [];
