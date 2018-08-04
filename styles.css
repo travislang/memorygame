@@ -34,37 +34,14 @@ h1 {
 	justify-content: space-around;
 	align-items: center;
 	margin: 10px;
-	margin-bottom: 30px;
+	margin-bottom: -35px;
 	margin-right: -15px;
 	font-size: 1.25em;
 }
-button, .score, .high-score {
+.score, .high-score {
 	margin: 0 50px;
 	text-align: center;
 }
-/* #button {
-	padding: 10px;
-	text-transform: uppercase;
-	text-align: center;
-	color: #595a5b;
-	font-size: 0.8em;
-  font-weight: bold;
-	letter-spacing: 2px;
-	outline: none;
-  height: 40px;
-  width: 130px;
-  border-radius:40px;
-  background: #ededed;
-  border: 2px solid #1ECD97;
-  color: #1ECD97;
-  text-shadow: 0;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-#button:hover {
-  color: white;
-  background: #1ECD97;
-} */
 .current-score, .highest-score {
 	font-weight: bold;
 	font-size: 1.2em;
@@ -78,12 +55,6 @@ button, .score, .high-score {
 	min-height: 280px;
 	margin: 0 auto;
 	border-radius: 50%;
-}
-.button {
-	width: 100%;
-	height: 100%;
-	border: 2px solid black;
-	border-radius: 20px;
 }
 
 /* button stuff */
@@ -239,9 +210,12 @@ input {
 .switch.orange {
 	animation: startingorange 1s forwards linear alternate infinite paused;
 }
+
+/* gameover text */
+
 .start {
 	text-align: center;
-	/* width: 300px; */
+	letter-spacing: 3px;
 	font-size: 5em;
 	color: #1ECD97;
 	text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
@@ -249,7 +223,7 @@ input {
 	z-index: 1000;
 	text-transform: uppercase;
 	position: absolute;
-	top: 43%;
+	top: 50%;
 	left: 50%;
 	opacity: 0;
 	transform: translate(-50%, -50%) scale(0);
@@ -353,25 +327,44 @@ input {
 	body {
 		font-size: 0.8rem;
 	}
-	button, .score, .high-score {
+	.score, .high-score {
 		margin: 0 30px;
 		text-align: center;
 	}
-	.start {
-		top: 30%;
-		left: 20%;
+	.switch label:before {
+		top: -6px;
+		right: -6px;
+		bottom: -6px;
+		left: -6px;
+	}
+	.switch label:after {
+		top: -12px;
+		right: -12px;
+		bottom: -12px;
+		left: -12px;
 	}
 }
 @media only screen and (max-width: 400px) {
 	body {
 		font-size: 0.7rem;
 	}
-	button, .score, .high-score {
+	.score, .high-score {
 		margin: 0 20px;
 		text-align: center;
 	}
-	.start {
-		top: 30%;
-		left: 14%;
+	.info {
+		margin-bottom: -20px;
+	}
+	.switch label:before {
+		top: -5px;
+		right: -5px;
+		bottom: -5px;
+		left: -5px;
+	}
+	.switch label:after {
+		top: -10px;
+		right: -10px;
+		bottom: -10px;
+		left: -10px;
 	}
 }
