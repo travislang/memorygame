@@ -67,6 +67,7 @@ window.onload = function() {
 	}
 
 	function nextTurn(time) {
+		console.log(time)
 		soundData[colors[pattern[compTrack]].classList[1]].sound.play();
 		colors[pattern[compTrack]].lastElementChild.classList.add("active");
 		colors[pattern[compTrack]].lastElementChild.style.color = hex[pattern[compTrack]];

@@ -79,40 +79,67 @@ button, .score, .high-score {
 	margin: 0 auto;
 	border-radius: 50%;
 }
-.button {
+/* .button {
 	width: 100%;
 	height: 100%;
 	border: 2px solid black;
 	border-radius: 20px;
-}
+} */
 
 /* button stuff */
 
-.switch {
-  width: 24%;
-  height: 24%;
-  position: relative;
+/* .button:before {
+	content: "";
+	border-top: 1px solid red;
+	border-bottom: 1px solid black;
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	top: 50%;
+	z-index: -1;
+} */
+
+.button div {
+	display: block;
+	background-color: blue;
+	background: linear-gradient(blue, red);
+	color: orange;
+	margin: 1em;
+	width: 144px;
+	height: 144px;
+	position: absolute;
+	text-align: center;
+	line-height: 144;
+	border-radius: 50%;
+	box-shadow: 0px 3px 8px #aaa,
+							inset 0px 2px 3px #fff;
+	border: solid 1px transparent;
 }
-.switch label {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  color: #e8ebef;
-  font-size: 1.8em;
-  font-family: sans-serif;
-  font-style: normal;
-  text-align: center;
-  line-height: 105px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  background: linear-gradient(#fdfdfd, #ece8dd);
-  transition: all 0.1s ease-out;
+
+.button div:before {
+	content: "";
+	display: block;
+	background: #fff;
+	border-top: 3px solid red;
+	position: absolute;
+	top: -18px;
+	right: -18px;
+  bottom: -18px;
+  left: -18px;
   z-index: -1;
-  box-shadow: inset 0 4px 3px rgba(255, 255, 255, 0.8),
-										0 5px 8px rgba(0, 0, 0, 0.3),
-										0 8px 8px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  box-shadow: inset 0px 8px 48px #ddd;
 }
+.active {
+	box-shadow: none;
+	border: 1px solid green;
+}
+.button div:hover {
+	color: #555;
+	background: #f5f5f5;
+}
+
+/*
 .switch.blue label {
 	color: #bcc6f2;
 }
@@ -128,79 +155,11 @@ button, .score, .high-score {
 .switch.orange label {
 	color: #f9dcc0;
 }
-.switch label:before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  right: -8px;
-  top: -8px;
-  bottom: -8px;
-  z-index: -1;
-  border-radius: inherit;
-  box-shadow: inset 0 8px 8px rgba(0, 0, 0, 0.15);
-  /* Smooth trick */
-  filter: blur(1px);
-}
-.switch label:after {
-  content: "";
-  position: absolute;
-  left: -16px;
-  right: -16px;
-  top: -16px;
-  bottom: -16px;
-  z-index: -2;
-  border-radius: inherit;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-										0 1px 2px rgba(0, 0, 0, 0.15),
-										0 0 8px rgba(0, 0, 0, 0.1);
-}
-.icon-off {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.icon-off:after {
-	opacity: 1;
-  content: "";
-  display: block;
-  position: absolute;
-  width: 70%;
-  height: 70%;
-  left: 50%;
-  top: 50%;
-  z-index: -1;
-  margin: -35% 0 0 -35%;
-  border-radius: 50%;
-  background: linear-gradient(#d8d7d0, #f8f6f3);
-  box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.2),
-							0 2px 5px rgba(255, 255, 255, 0.15);
-  -webkit-filter: blur(1px);
-  /* Smooth trick */
-  filter: blur(1px);
-}
 
-input {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  opacity: 0;
-  cursor: pointer;
-}
 .active {
       box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.5),
 			 									0 3px 5px rgba(0, 0, 0, 0.3),
 												0 3px 5px 3px rgba(0, 0, 0, 0.1) !important;
-}
-.switch {
-    position: absolute;
-
 }
 .switch.red {
 	top: 28%;
@@ -221,7 +180,7 @@ input {
 .switch.orange {
 	bottom: 11%;
 	right: 18%;
-}
+} */
 .start {
 	text-align: center;
 	/* width: 300px; */
